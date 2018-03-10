@@ -115,7 +115,7 @@
 
 			if ($all) {
 
-				$sql->query("UPDATE tb_cartsproducts SET dtremoved = NOW() WHERE idcart = :idcart AND idproduct = :idproduct AMD dtremoved IS NULL", [
+				$sql->query("UPDATE tb_cartsproducts SET dtremoved = NOW() WHERE idcart = :idcart AND idproduct = :idproduct AND dtremoved IS NULL", [
 					':idcart'=>$this->getidcart(),
 					':idproduct'=>$product->getidproduct()
 				]);
