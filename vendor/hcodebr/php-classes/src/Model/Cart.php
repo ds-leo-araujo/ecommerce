@@ -108,6 +108,8 @@
 				':idcart'=>$this->getidcart(),
 				':idproduct'=>$product->getidproduct()
 			]);
+
+			$this->getCalculateTotal();
 		}
 
 		public function removeProduct(Product $product, $all = false)
@@ -127,6 +129,8 @@
 					':idproduct'=>$product->getidproduct()
 				]);
 			}
+
+			$this->getCalculateTotal();
 		}
 
 		public function getProducts()
@@ -218,8 +222,6 @@
 
 				return $result;
 
-
-
 			} else {
 
 			}
@@ -248,6 +250,32 @@
 		public static function clearMsgError()
 		{
 			$_SESSION[Cart::SESSION_ERROR] = NULL;
+		}
+
+		public function updateFreight()
+		{
+			if ($this->getdeszipcode() != '') {
+
+				$this->setFreight($this->getdeszipcode());
+
+			}
+		}
+
+		public function getValues()
+		{
+			$this->getCalculateTotal();
+
+			return parent::getValues();
+		}
+
+		public function getCalculateTotal()
+		{
+			$this->updateFreight();
+
+			$totals = $this->getProductsTotals();
+
+			$this->setvlsubtotal($totals['vlprice']);
+			$this->setvltotal($totals['vlprice'] + $this->getvlfreight());
 		}
 		
 	}
