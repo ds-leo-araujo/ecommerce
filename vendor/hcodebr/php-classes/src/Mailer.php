@@ -9,8 +9,8 @@
 	*/
 	class Mailer
 	{
-		const USERNAME = "leobruno.cba@gmail.com";
-		const PASSWORD = "D1@3ler076";
+		const USERNAME = "meuemail@mail.com";
+		const PASSWORD = "minhasenha";
 		const NAME_FROM = "Glyph Store";
 
 		private $mail;
