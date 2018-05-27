@@ -35,6 +35,9 @@ $app->get("/admin/categories", function(){
 		]);
 	}
 
+	//var_dump($pages);
+	//exit;
+
 	$page = new PageAdmin();
 
 	$page->setTpl("categories", [
